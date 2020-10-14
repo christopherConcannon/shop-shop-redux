@@ -11,14 +11,13 @@ import {
 	TOGGLE_CART
 } from '../utils/actions';
 
-
 const initialState = {
-  products: [],
-  cart: [],
-  cartOpen: false,
-  categories: [],
-  currentCategory: '',
-}
+	products        : [],
+	cart            : [],
+	cartOpen        : false,
+	categories      : [],
+	currentCategory : ''
+};
 
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -77,20 +76,20 @@ const reducer = (state = initialState, action) => {
 					}
 					return product;
 				})
-      };
-      
-    case CLEAR_CART:
-      return {
-        ...state, 
-        cartOpen: false,
-        cart: []
-      }
+			};
 
-    case TOGGLE_CART:
-      return {
-        ...state,
-        cartOpen: !state.cartOpen
-      }
+		case CLEAR_CART:
+			return {
+				...state,
+				cartOpen : false,
+				cart     : []
+			};
+
+		case TOGGLE_CART:
+			return {
+				...state,
+				cartOpen : !state.cartOpen
+			};
 
 		// if it's none of these actions, do not update state at all and keep things the same
 		default:
