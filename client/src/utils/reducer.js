@@ -11,16 +11,16 @@ import {
 	TOGGLE_CART
 } from '../utils/actions';
 
-// const initialState = {
-// 	products        : [],
-// 	cart            : [],
-// 	cartOpen        : false,
-// 	categories      : [],
-// 	currentCategory : ''
-// };
+const initialState = {
+	products        : [],
+	cart            : [],
+	cartOpen        : false,
+	categories      : [],
+	currentCategory : ''
+};
 
-// const reducer = (state = initialState, action) => {
-const reducer = (state, action) => {
+const reducer = (state = initialState, action) => {
+// const reducer = (state, action) => {
 	switch (action.type) {
 		// if action type value is the value of 'UPDATE_PRODUCTS', return a new state object with an updated products array
 		case UPDATE_PRODUCTS:

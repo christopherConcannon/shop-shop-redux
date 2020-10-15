@@ -5,9 +5,12 @@ import categoriesReducer from './categoriesReducer'
 import cartReducer from './cartReducer'
 
 const allReducer = combineReducers({
-  pruducts: productsReducer,
-  categories: categoriesReducer,
-  cart: cartReducer 
+  productsReducer,
+  categoriesReducer,
+  cartReducer 
+  // products: productsReducer,
+  // categories: categoriesReducer,
+  // cart: cartReducer 
 })
 
 export default allReducer;
