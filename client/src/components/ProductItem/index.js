@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { pluralize } from '../../utils/helpers';
+// import { addToCart, updateCartQuantity } from '../../utils/actions';
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from '../../utils/actions';
 import { idbPromise } from '../../utils/helpers';
 
@@ -19,6 +20,7 @@ function ProductItem(item) {
 
 		// if there was a match, call UPDATE with a new purchase quantity
 		if (itemInCart) {
+			// dispatch(updateCartQuantity(_id, parseInt(itemInCart.purchaseQuantity) + 1));
 			dispatch({
 				type             : UPDATE_CART_QUANTITY,
 				_id              : _id,
@@ -29,6 +31,7 @@ function ProductItem(item) {
 				purchaseQuantity : parseInt(itemInCart.purchaseQuantity) + 1
 			});
 		} else {
+			dispatch(addToCart({ ...item, purchaseQuantity: 1 }));
 			dispatch({
 				type    : ADD_TO_CART,
 				product : { ...item, purchaseQuantity: 1 }
