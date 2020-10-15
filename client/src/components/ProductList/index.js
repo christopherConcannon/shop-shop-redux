@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useQuery } from '@apollo/react-hooks';
-import { UPDATE_PRODUCTS } from '../../utils/actions';
+// import { UPDATE_PRODUCTS } from '../../utils/actions';
+import { updateProducts } from '../../utils/actionCreators';
 import { idbPromise } from '../../utils/helpers';
 import ProductItem from '../ProductItem';
 import { QUERY_PRODUCTS } from '../../utils/queries';
@@ -19,11 +20,12 @@ function ProductList() {
 		() => {
 			// if there's data to be stored
 			if (data) {
-				// store it in the global state object
-				dispatch({
-					type     : UPDATE_PRODUCTS,
-					products : data.products
-				});
+        // store it in the global state object
+        dispatch(updateProducts(data.products));
+				// dispatch({
+				// 	type     : UPDATE_PRODUCTS,
+				// 	products : data.products
+				// });
 
 				// also take each product and save it to the IndexedDB using the helper function
 				data.products.forEach((product) => {
@@ -33,11 +35,12 @@ function ProductList() {
 			} else if (!loading) {
 				// since we're offline, get all of the data from the 'products' store
 				idbPromise('products', 'get').then((products) => {
-					// use retrieved data to set global state for offline browsing
-					dispatch({
-						type     : UPDATE_PRODUCTS,
-						products : products
-					});
+          // use retrieved data to set global state for offline browsing
+          dispatch(updateProducts(products));
+					// dispatch({
+					// 	type     : UPDATE_PRODUCTS,
+					// 	products : products
+					// });
 				});
 			}
 		},
