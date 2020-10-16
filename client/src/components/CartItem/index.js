@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { removeFromCart, updateCartQuantity } from '../../utils/actionCreators';
 import { idbPromise } from '../../utils/helpers';
 

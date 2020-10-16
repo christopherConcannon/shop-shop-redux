@@ -15,6 +15,7 @@ import Cart from '../components/Cart';
 
 function Detail() {
   const state = useSelector((state) => state);
+	const { products, cart } = state;
 
 	const dispatch = useDispatch();
 
@@ -24,7 +25,6 @@ function Detail() {
 
 	const { loading, data } = useQuery(QUERY_PRODUCTS);
 
-	const { products, cart } = state;
 
 	useEffect(
 		() => {
@@ -68,7 +68,7 @@ function Detail() {
 	};
 
 	const removeItemFromCart = () => {
-		dispatch(removeFromCart(currentProduct._id));
+		dispatch(removeFromCart(currentProduct._id, cart));
 
 		// upon removal from cart, delete the item from IndexedDB using the 'currentProduct._id' to locate what to remove
 		idbPromise('cart', 'delete', { ...currentProduct });

@@ -59,10 +59,11 @@ export const addMultipleToCart = (products) => {
 	};
 };
 
-export const removeFromCart = (id) => {
+export const removeFromCart = (id, cart) => {
 	return {
 		type : REMOVE_FROM_CART,
-		_id  : id
+    _id  : id,
+    cart
 	};
 };
 
