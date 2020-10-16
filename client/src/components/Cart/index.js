@@ -4,7 +4,6 @@ import CartItem from '../CartItem';
 import Auth from '../../utils/auth';
 import './style.css';
 
-import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 import { toggleCart, addMultipleToCart } from '../../utils/actionCreators';
 import { idbPromise } from '../../utils/helpers';
 import { QUERY_CHECKOUT } from '../../utils/queries';
@@ -25,7 +24,6 @@ const Cart = () => {
 			async function getCart() {
 				const cart = await idbPromise('cart', 'get');
 				dispatch(addMultipleToCart([ ...cart ] ));
-				// dispatch({ type: ADD_MULTIPLE_TO_CART, products: [ ...cart ] });
 			}
 
 			if (!state.cart.length) {

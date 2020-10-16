@@ -2,8 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { pluralize } from '../../utils/helpers';
-import { ADD_TO_CART, UPDATE_CART_QUANTITY } from '../../utils/actions';
-import { addProductToCart, updateCartQuantity } from '../../utils/actionCreators';
+import { addToCart, updateCartQuantity } from '../../utils/actionCreators';
 import { idbPromise } from '../../utils/helpers';
 
 function ProductItem(item) {
@@ -14,41 +13,21 @@ function ProductItem(item) {
 
 	const { cart } = state;
 
-	const addToCart = () => {
+	const addItemToCart = () => {
 		// find the cart item with the matching id
 		const itemInCart = cart.find((cartItem) => cartItem._id === _id);
 
 		// if there was a match, call UPDATE with a new purchase quantity
 		if (itemInCart) {
       dispatch(updateCartQuantity(_id, (parseInt(itemInCart.purchaseQuantity) + 1)));
-			// dispatch({
-			// 	type             : UPDATE_CART_QUANTITY,
-			// 	_id              : _id,
-			// 	purchaseQuantity : parseInt(itemInCart.purchaseQuantity) + 1
-			// });
 			idbPromise('cart', 'put', {
 				...itemInCart,
 				purchaseQuantity : parseInt(itemInCart.purchaseQuantity) + 1
 			});
 		} else {
 
-      // not working...
-      //       RangeError: Maximum call stack size exceeded
-      // (anonymous function)
-      // C:/Users/cmcon/Desktop/ut coding program/MODULES/Module-22-STATE/challenge/shop-shop-redux/client/src/components/ProductItem/index.js:19
-      //   16 | 
-      //   17 | const addToCart = () => {
-      //   18 | 	// find the cart item with the matching id
-      // > 19 | 	const itemInCart = cart.find((cartItem) => cartItem._id === _id);
-      //      | ^  20 | 
-      //   21 | 	// if there was a match, call UPDATE with a new purchase quantity
-      //   22 | 	if (itemInCart) {
 
-      dispatch(addProductToCart({ ...item, purchaseQuantity: 1 }))
-			// dispatch({
-			// 	type    : ADD_TO_CART,
-			// 	product : { ...item, purchaseQuantity: 1 }
-			// });
+      dispatch(addToCart({ ...item, purchaseQuantity: 1 }))
 			idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
 		}
 	};
@@ -65,7 +44,7 @@ function ProductItem(item) {
 				</div>
 				<span>${price}</span>
 			</div>
-			<button onClick={addToCart}>Add to cart</button>
+			<button onClick={addItemToCart}>Add to cart</button>
 		</div>
 	);
 }
