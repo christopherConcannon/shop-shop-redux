@@ -14,7 +14,8 @@ import spinner from '../assets/spinner.gif'
 import Cart from "../components/Cart";
 
 function Detail() {
-	const state = useSelector((state) => state);
+  const state = useSelector((state) => state);
+
 	const dispatch = useDispatch();
  
   const { id } = useParams();
@@ -24,6 +25,7 @@ function Detail() {
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 
   const { products, cart } = state;
+  // console.log("Cart from Detail: ", cart)
 
   useEffect(() => {
     // already in global store
@@ -79,7 +81,8 @@ function Detail() {
   const removeFromCart = () => {
     dispatch({
       type: REMOVE_FROM_CART,
-      _id: currentProduct._id
+      _id: currentProduct._id,
+      cart: cart
     })
     
     // upon removal from cart, delete the item from IndexedDB using the 'currentProduct._id' to locate what to remove

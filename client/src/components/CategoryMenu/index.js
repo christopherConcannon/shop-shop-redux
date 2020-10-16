@@ -6,10 +6,26 @@ import { UPDATE_CATEGORIES, UPDATE_CURRENT_CATEGORY } from '../../utils/actions'
 import { idbPromise } from '../../utils/helpers';
 
 function CategoryMenu() {
-	const { categories } = useSelector((state) => state);
-	const dispatch = useDispatch();
 
+
+  //  NOT SURE WHY BUT categoryData IS AN OBJECT WITH THE CATEGORIES ARRAY AS IT'S ONLY PROPERTY.  SO WHEN IT GETS DISPATCHED TO REDUX GLOBAL STATE IT IS ENCLOSED IN AN OBJECT SO TO ACCESS THE ARRAY I HAVE TO DRILL DOWN AN EXTRA LEVEL INTO THE STATE PROPERTIES TO GET AN ARRAY WHICH I CAN MAP OVER AND AVOID .MAP() IS NOT A FUNCTION ERROR
+
+	// get data from DB with Apollo
 	const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
+	// console.log('categoryData: ', categoryData);
+	// console.log('categoryData.categories: ', categoryData.categories);
+	// console.log('categoryData.categories.categories: ', categoryData.categories.categories);
+
+  // // TESTING
+  // const state = useSelector((state) => state);
+  // console.log('redux state: ', state);
+
+
+	// const { categories } = useSelector((state) => state.categories);
+	const { categories } = useSelector((state) => state);
+	// console.log('categories from state: ', categories);
+
+	const dispatch = useDispatch();
 
 	useEffect(
 		() => {
@@ -46,7 +62,21 @@ function CategoryMenu() {
 	return (
 		<div>
 			<h2>Choose a Category:</h2>
-			{categories.map((item) => (
+
+			{categories ? (
+				categories.map((item) => (
+					<button
+						key={item._id}
+						onClick={() => {
+							handleClick(item._id);
+						}}
+					>
+						{item.name}
+					</button>
+				))
+			) : null}
+
+			{/* {categories.map((item) => (
 				<button
 					key={item._id}
 					onClick={() => {
@@ -55,7 +85,7 @@ function CategoryMenu() {
 				>
 					{item.name}
 				</button>
-			))}
+			))}  */}
 		</div>
 	);
 }
