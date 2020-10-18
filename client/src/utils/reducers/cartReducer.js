@@ -4,37 +4,35 @@ import {
 	REMOVE_FROM_CART,
 	UPDATE_CART_QUANTITY,
 	CLEAR_CART
-} from '../../utils/actions';
+} from '../../utils/types';
 
 const cartReducer = (state = [], action) => {
 	switch (action.type) {
-    case ADD_TO_CART: 
-      return [ ...state, action.product ]
+		case ADD_TO_CART:
+			return [ ...state, action.product ];
 
-    case ADD_MULTIPLE_TO_CART:
-      return [ ...state, ...action.products ]
+		case ADD_MULTIPLE_TO_CART:
+			return [ ...state, ...action.products ];
 
-    case REMOVE_FROM_CART:
-      
-      let newState = action.cart.filter((product) => {
-				return product._id !== action._id
-      });
-      console.log("Old cart: ", action.cart)
-      console.log("New cart: ", newState)
-      
-      return newState;
+		case REMOVE_FROM_CART:
+			let newState = action.cart.filter((product) => {
+				return product._id !== action._id;
+			});
+			console.log('Old cart: ', action.cart);
+			console.log('New cart: ', newState);
 
-    case UPDATE_CART_QUANTITY: 
-      return state.map((product) => {
-        if (action._id === product._id) {
-          product.purchaseQuantity = action.purchaseQuantity;
-        }
-        return product;
-      })
+			return newState;
 
-    case CLEAR_CART:
-      return [];
+		case UPDATE_CART_QUANTITY:
+			return state.map((product) => {
+				if (action._id === product._id) {
+					product.purchaseQuantity = action.purchaseQuantity;
+				}
+				return product;
+			});
 
+		case CLEAR_CART:
+			return [];
 
 		default:
 			return state;

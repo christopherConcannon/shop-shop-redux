@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useQuery } from '@apollo/react-hooks';
+import { QUERY_PRODUCTS } from '../utils/queries';
 import {
 	removeFromCart,
 	updateCartQuantity,
 	addToCart,
 	updateProducts
-} from '../utils/actionCreators';
+} from '../utils/actions';
 import { idbPromise } from '../utils/helpers';
-import { QUERY_PRODUCTS } from '../utils/queries';
 import spinner from '../assets/spinner.gif';
+
 import Cart from '../components/Cart';
 
 function Detail() {

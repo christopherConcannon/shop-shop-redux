@@ -1,5 +1,8 @@
 const jwt = require('jsonwebtoken');
 
+// process.env variable not currently working.  console.logs correctly, but getting an error in graphql playground--SEE ERROR BELOW
+// const secret = process.env.JWT_SECRET;
+// console.log(secret);
 const secret = 'mysecretsshhhhh';
 const expiration = '2h';
 

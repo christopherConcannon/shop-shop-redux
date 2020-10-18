@@ -1,12 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeFromCart, updateCartQuantity } from '../../utils/actionCreators';
+import { removeFromCart, updateCartQuantity } from '../../utils/actions';
 import { idbPromise } from '../../utils/helpers';
 
 const CartItem = ({ item }) => {
-  const dispatch = useDispatch();
-  const { cart } = useSelector((store) => store);
-  // console.log("store.cart from CartItem: ", cart)
+	const dispatch = useDispatch();
+	const { cart } = useSelector((store) => store);
 
 	const removeItemFromCart = (item) => {
 		dispatch(removeFromCart(item._id, cart));
@@ -17,10 +16,10 @@ const CartItem = ({ item }) => {
 		const value = e.target.value;
 
 		if (value === '0') {
-      dispatch(removeFromCart(item._id, cart));
+			dispatch(removeFromCart(item._id, cart));
 			idbPromise('cart', 'delete', { ...item });
 		} else {
-      dispatch(updateCartQuantity(item._id, parseInt(value)))
+			dispatch(updateCartQuantity(item._id, parseInt(value)));
 			idbPromise('cart', 'put', { ...item, purchaseQuantity: parseInt(value) });
 		}
 	};

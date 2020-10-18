@@ -8,7 +8,7 @@ import {
 	ADD_MULTIPLE_TO_CART,
 	REMOVE_FROM_CART,
 	CLEAR_CART
-} from './constants';
+} from '../types';
 
 export const updateCategories = (categories) => {
 	return {
