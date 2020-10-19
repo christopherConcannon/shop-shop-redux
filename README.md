@@ -20,7 +20,7 @@ A fullstack MERN ecommerce site with GraphQL and Apollo
   * [Questions](#questions)
   
 ## Installation
-Clone project to a directory on your local machine and cd into the shop-shop-redux directory.  Run <$ npm install> to install inquirer package. 
+Clone project to a directory on your local machine and cd into the shop-shop-redux directory.  Run <$ npm install> to install dependencies.  Run <$ npm start> to launch application on localhost port 3000 
 
 ## Usage
 Add and remove products from your cart as desired.  When ready to check out, user must sign up for an account. Test checkout functionality is handled by Stripe payment processing where user can enter payment details.  Once payment is successfully processed, user will be redirected back to shopping page where they can choose to view their order history
