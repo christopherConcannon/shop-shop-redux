@@ -2,6 +2,9 @@
 
 ![MIT license badge](https://img.shields.io/badge/license-MIT-green)
 
+## Description
+A full-stack, end-to-end MERN ecommerce application using Redux, GraphQL and Apollo.  Features Stripe payment integration. Installable as a Progressive Web Application. 
+
 ##### Homescreen
 ![Homescreen Screenshot](./assets/images/screenshot.png)
 ##### Single Product View
@@ -13,12 +16,6 @@
 
 
 Visit [Shop Shop Redux](https://nameless-wave-32421.herokuapp.com/)
-
-
-
-## Description
-
-A full-stack, end-to-end MERN ecommerce application using Redux, GraphQL and Apollo.  Features Stripe payment integration. Installable as a Progressive Web Application. 
 
 ## Table of Contents
   * [Installation](#installation)
