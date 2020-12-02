@@ -16,6 +16,7 @@ function ProductList() {
 
 	const { loading, data } = useQuery(QUERY_PRODUCTS);
 
+  // this will be called each time one of the values in the dependency array (data, loading, dispatch) changes 
 	useEffect(
 		() => {
 			// if there's data to be stored

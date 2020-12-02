@@ -18,11 +18,13 @@ function CategoryMenu() {
 			// if categoryData exists or has changed from the response of useQuery, then run dispatch()
 			if (categoryData) {
 				// execute our dispatch function with our action object indicating the type of action and the data to set our state for categories to
-				dispatch(updateCategories(categoryData.categories));
+        dispatch(updateCategories(categoryData.categories));
+        console.log('categoryData.categories: ', categoryData.categories )
 				// also write to IndexedDB
 				categoryData.categories.forEach((category) => {
 					idbPromise('categories', 'put', category);
-				});
+        });
+        // if app can't communicate with server, get categories from indexedDB
 			} else if (!loading) {
 				idbPromise('categories', 'get').then((categories) => {
 					dispatch(updateCategories(categories));
