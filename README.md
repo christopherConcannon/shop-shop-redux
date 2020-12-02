@@ -3,7 +3,7 @@
 ![MIT license badge](https://img.shields.io/badge/license-MIT-green)
 
 ## Description
-A full-stack, end-to-end MERN ecommerce application using Redux, GraphQL and Apollo.  Features Stripe payment integration. Installable as a Progressive Web Application. 
+A full-stack, end-to-end MERN ecommerce application using Redux to handle global state management, GraphQL and Apollo.  Features Stripe payment integration. Installable as a Progressive Web Application. 
 
 ##### Homescreen
 ![Homescreen Screenshot](./assets/images/screenshot.png)
