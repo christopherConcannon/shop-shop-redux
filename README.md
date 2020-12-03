@@ -15,7 +15,7 @@ A full-stack, end-to-end MERN ecommerce application using Redux to handle global
 ![Stripe Payment View Screenshot](./assets/images/screenshot4.png)
 
 
-Visit [Shop Shop Redux](https://nameless-wave-32421.herokuapp.com/)
+Visit [Shop Shop Redux](https://shop-shop-redux-xo.herokuapp.com/)
 
 ## Table of Contents
   * [Installation](#installation)
